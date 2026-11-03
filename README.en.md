@@ -48,6 +48,26 @@ On Wayland, log out and back in to load new code.
 Other targets: `make pack`, `make prefs`, `make uninstall`, `make pot`
 (refresh translations), `make check` (validate the settings schema).
 
+## Releasing a new version
+
+From `main`, with no pending changes:
+
+```sh
+make release VERSION=2.1
+```
+
+This sets `version-name` in `metadata.json`, checks that the package
+builds, commits, creates the `v2.1` tag and pushes it. When the tag
+arrives, GitHub Actions (`.github/workflows/release.yml`) builds the zip
+and creates the GitHub Release with the change notes.
+
+Then download the zip from the Release and upload it by hand at
+<https://extensions.gnome.org/upload/>, which has no automated upload.
+extensions.gnome.org assigns the `version` number; we only control
+`version-name`.
+
+The zip is never stored in git: `build/` is in `.gitignore`.
+
 ## Project layout
 
 ```
@@ -61,6 +81,7 @@ lib/format.js        date helpers shared with prefs.js
 schemas/             GSettings schema (all options)
 po/                  translations (es)
 stylesheet.css       styles, light and dark theme friendly
+.github/workflows/   automatic release publishing
 ```
 
 ## How it works (for contributors)

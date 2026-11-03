@@ -1,0 +1,54 @@
+# Builds the extension zip and publishes a GitHub Release when a version
+# tag (v2.1, v3.0…) is pushed. Create the tag with `make release VERSION=x.y`.
+#
+# Fedora is used because it ships the same `gnome-extensions` tool that
+# developers use locally, so the zip is identical to `make pack`.
+
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    container: fedora:latest
+
+    steps:
+      - name: Install tools
+        run: dnf install -y --setopt=install_weak_deps=False gnome-shell gettext glib2 make zip unzip git gh
+
+      - uses: actions/checkout@v4
+
+      - name: Check that the tag matches metadata.json
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          meta=$(sed -n 's/.*"version-name": *"\([^"]*\)".*/\1/p' metadata.json)
+          if [ "$tag" != "$meta" ]; then
+            echo "::error::Tag v$tag does not match version-name $meta in metadata.json"
+            exit 1
+          fi
+
+      - name: Validate
+        run: |
+          make check
+          for po in po/*.po; do msgfmt --check -o /dev/null "$po"; done
+
+      - name: Pack
+        run: |
+          make pack
+          unzip -l build/*.shell-extension.zip
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" build/*.shell-extension.zip \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "Unified Panel ${GITHUB_REF_NAME#v}" \
+            --generate-notes

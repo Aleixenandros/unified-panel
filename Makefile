@@ -6,7 +6,7 @@ SCHEMA := schemas/org.gnome.shell.extensions.unified-panel.gschema.xml
 ZIP    := build/$(UUID).shell-extension.zip
 JS     := extension.js prefs.js $(wildcard lib/*.js)
 
-.PHONY: all pack install uninstall enable disable prefs pot check clean
+.PHONY: all pack install uninstall enable disable prefs pot check release clean
 
 all: pack
 
@@ -45,6 +45,22 @@ pot:
 check:
 	glib-compile-schemas --strict --dry-run schemas
 	@echo "OK"
+
+# Publish a new version: sets version-name, commits, tags vX.Y and pushes.
+# GitHub Actions then builds the zip and creates the GitHub Release.
+# Usage: make release VERSION=2.1
+release:
+	@test -n "$(VERSION)" || { echo "Usage: make release VERSION=2.1"; exit 1; }
+	@test "$$(git rev-parse --abbrev-ref HEAD)" = main || { echo "Run it from the main branch"; exit 1; }
+	@git diff --quiet && git diff --cached --quiet || { echo "Commit or stash your changes first"; exit 1; }
+	@! git rev-parse -q --verify "refs/tags/v$(VERSION)" >/dev/null || { echo "Tag v$(VERSION) already exists"; exit 1; }
+	git pull --ff-only
+	sed -i 's/"version-name": "[^"]*"/"version-name": "$(VERSION)"/' metadata.json
+	$(MAKE) --no-print-directory check pack
+	git diff --quiet metadata.json || git commit -m "Release $(VERSION)" metadata.json
+	git tag -a "v$(VERSION)" -m "Unified Panel $(VERSION)"
+	git push origin main "v$(VERSION)"
+	@echo "Pushed v$(VERSION). GitHub Actions will publish the release."
 
 clean:
 	rm -rf build
