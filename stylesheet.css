@@ -1,0 +1,172 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later
+ *
+ * Colours use translucent greys so they work with both the light and the
+ * dark shell themes.
+ */
+
+/* ── Layout ─────────────────────────────────────────────────────── */
+
+.unified-panel-root {
+  spacing: 18px;
+}
+
+.unified-panel-column {
+  spacing: 12px;
+}
+
+.unified-panel-side-column {
+  background-color: rgba(127, 127, 127, 0.08);
+  border-radius: 24px;
+  padding: 12px;
+}
+
+.unified-panel-section-title {
+  font-weight: bold;
+  font-size: 1.1em;
+  padding: 0 6px;
+}
+
+/* ── Notification list (moved from the clock popup) ─────────────── */
+
+.unified-panel-side-column .message-list,
+.unified-panel-side-column .message-list:ltr,
+.unified-panel-side-column .message-list:rtl {
+  border-width: 0;
+  margin: 0;
+  padding: 0;
+  min-height: 10em;
+  max-height: 28em;
+}
+
+/* The Quick Settings theme enlarges every button inside it; restore the
+ * normal sizes for the widgets that come from the clock popup. */
+.quick-settings .unified-panel-side-column .message .message-header .message-close-button,
+.quick-settings .unified-panel-side-column .message .message-header .message-expand-button {
+  padding: 6px;
+}
+
+.quick-settings .unified-panel-side-column .calendar .calendar-month-header .pager-button {
+  padding: 0.818em;
+}
+
+.quick-settings .unified-panel-side-column .message-list-clear-button {
+  padding: 6px 18px;
+}
+
+/* ── Calendar column (moved from the clock popup) ──────────────── */
+
+.unified-panel-calendar,
+.unified-panel-calendar:ltr,
+.unified-panel-calendar:rtl {
+  margin: 0;
+  padding-top: 12px;
+  border-top-width: 1px;
+  border-color: rgba(127, 127, 127, 0.25);
+}
+
+/* ── Large clock header ─────────────────────────────────────────── */
+
+.unified-panel-header {
+  padding: 0 6px;
+}
+
+.unified-panel-header-time {
+  font-size: 2.4em;
+  font-weight: 800;
+}
+
+.unified-panel-header-date {
+  font-weight: 500;
+}
+
+/* ── Now Playing card ───────────────────────────────────────────── */
+
+.unified-panel-media {
+  background-color: rgba(127, 127, 127, 0.12);
+  border-radius: 24px;
+  padding: 12px;
+  spacing: 6px;
+}
+
+.unified-panel-media-top {
+  spacing: 6px;
+}
+
+.unified-panel-media-info-button {
+  border-radius: 14px;
+  padding: 0;
+}
+
+.unified-panel-media-info-button:hover,
+.unified-panel-media-info-button:focus {
+  background-color: rgba(127, 127, 127, 0.12);
+}
+
+.unified-panel-media-info {
+  spacing: 12px;
+}
+
+.unified-panel-media-cover {
+  icon-size: 56px;
+  border-radius: 12px;
+}
+
+.unified-panel-media-cover.fallback {
+  icon-size: 40px;
+  padding: 8px;
+  background-color: rgba(127, 127, 127, 0.15);
+}
+
+.unified-panel-media-app {
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.unified-panel-media-title {
+  font-weight: bold;
+}
+
+.unified-panel-media-artist {
+  font-size: 0.9em;
+}
+
+.unified-panel-media-controls {
+  spacing: 18px;
+}
+
+.unified-panel-media-button {
+  border-radius: 999px;
+  padding: 9px;
+}
+
+.unified-panel-media-button StIcon {
+  icon-size: 16px;
+}
+
+.unified-panel-media-button:hover,
+.unified-panel-media-button:focus {
+  background-color: rgba(127, 127, 127, 0.2);
+}
+
+.unified-panel-media-button:insensitive {
+  color: rgba(127, 127, 127, 0.6);
+}
+
+.unified-panel-media-button.unified-panel-media-play {
+  padding: 12px;
+  background-color: rgba(127, 127, 127, 0.2);
+}
+
+.unified-panel-media-button.unified-panel-media-play:hover {
+  background-color: rgba(127, 127, 127, 0.3);
+}
+
+.unified-panel-media-button.unified-panel-media-play StIcon {
+  icon-size: 20px;
+}
+
+/* ── Top bar clock ──────────────────────────────────────────────── */
+
+.unified-panel-clock {
+  text-align: center;
+}

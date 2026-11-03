@@ -1,0 +1,13 @@
+{
+  "uuid": "unified-panel@aleixenandros.me",
+  "name": "Unified Panel",
+  "description": "A unified control center for GNOME, mixing the macOS Control Center and the Windows notification center: quick settings, media controls, notifications and calendar in a single popup. Also includes an optional custom clock format for the top bar.",
+  "shell-version": [
+    "51"
+  ],
+  "url": "https://github.com/Aleixenandros/unified-panel",
+  "settings-schema": "org.gnome.shell.extensions.unified-panel",
+  "gettext-domain": "unified-panel",
+  "version": 2,
+  "version-name": "2.0"
+}

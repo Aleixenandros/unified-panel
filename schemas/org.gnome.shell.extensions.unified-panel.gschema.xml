@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="unified-panel">
+  <schema id="org.gnome.shell.extensions.unified-panel"
+          path="/org/gnome/shell/extensions/unified-panel/">
+
+    <!-- Layout -->
+    <key name="unify-notifications" type="b">
+      <default>true</default>
+      <summary>Show notifications in the unified panel</summary>
+    </key>
+    <key name="unify-calendar" type="b">
+      <default>true</default>
+      <summary>Show the calendar, events, world clocks and weather in the unified panel</summary>
+    </key>
+    <key name="notifications-side" type="s">
+      <choices>
+        <choice value="left"/>
+        <choice value="right"/>
+      </choices>
+      <default>'left'</default>
+      <summary>Side of the notifications and calendar column</summary>
+    </key>
+    <key name="show-header" type="b">
+      <default>true</default>
+      <summary>Show a large clock and date on top of the control column</summary>
+    </key>
+    <key name="header-date-format" type="s">
+      <default>''</default>
+      <summary>Date format of the header (GLib strftime syntax). Empty means automatic.</summary>
+    </key>
+    <key name="show-media" type="b">
+      <default>true</default>
+      <summary>Show a "Now Playing" card instead of media players in the notification list</summary>
+    </key>
+    <key name="hide-messages-indicator" type="b">
+      <default>false</default>
+      <summary>Hide the unread notifications dot next to the top bar clock</summary>
+    </key>
+
+    <!-- Top bar clock (Date Menu Formatter style) -->
+    <key name="custom-clock" type="b">
+      <default>false</default>
+      <summary>Use a custom format for the top bar clock</summary>
+    </key>
+    <key name="clock-format" type="s">
+      <default>'%a %-d %b  %H:%M'</default>
+      <summary>Format of the top bar clock (GLib strftime syntax, \n for a new line)</summary>
+    </key>
+    <key name="clock-font-size" type="i">
+      <range min="0" max="32"/>
+      <default>0</default>
+      <summary>Font size of the top bar clock in points (0 = theme default)</summary>
+    </key>
+  </schema>
+</schemalist>
