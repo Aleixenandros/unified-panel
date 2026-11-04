@@ -20,7 +20,7 @@ Compatible con **GNOME Shell 51**. Funciona con Dash to Panel.
 
 ## Opciones
 
-Se abren con `make prefs` o desde la aplicación Extensiones.
+Se abren con `./build.sh prefs` o desde la aplicación Extensiones.
 
 **Panel**
 - Integrar las notificaciones en el panel (sí/no)
@@ -38,19 +38,75 @@ Se abren con `make prefs` o desde la aplicación Extensiones.
   (`%a %-d %b  %H:%M`), `\n` para dos líneas, vista previa en directo y
   tamaño de letra
 
-## Instalar desde el código
+## Instalación
 
-No hace falta compilar ni Node.js, solo las herramientas estándar de GNOME.
+Requiere **GNOME Shell 51**. Comprueba tu versión con `gnome-shell --version`.
+
+### Opción 1: desde extensions.gnome.org
+
+Cuando esté aprobada, se podrá instalar con un clic desde
+[extensions.gnome.org](https://extensions.gnome.org) o desde la aplicación
+**Gestor de extensiones**, buscando «Unified Panel».
+
+### Opción 2: desde una versión publicada
+
+1. Descarga `unified-panel@aleixenandros.me.shell-extension.zip` de la
+   [última versión](https://github.com/Aleixenandros/unified-panel/releases/latest).
+2. Instálala y actívala:
+
+   ```sh
+   gnome-extensions install --force unified-panel@aleixenandros.me.shell-extension.zip
+   gnome-extensions enable unified-panel@aleixenandros.me
+   ```
+
+3. Cierra sesión y vuelve a entrar.
+
+### Opción 3: desde el código
+
+No hace falta compilar código ni instalar Node.js: el script `build.sh`
+empaqueta e instala la extensión con las herramientas estándar de GNOME.
 
 ```sh
-make install          # empaqueta e instala para el usuario actual
-make enable           # solo la primera vez
+git clone https://github.com/Aleixenandros/unified-panel.git
+cd unified-panel
+./build.sh
 ```
 
-En Wayland, cierra sesión y vuelve a entrar para cargar el código nuevo.
+Sin argumentos muestra un menú con las opciones más comunes. También se
+puede usar directamente:
 
-Otros objetivos: `make pack`, `make prefs`, `make uninstall`, `make pot`
-(actualizar traducciones), `make check` (validar el esquema de opciones).
+| Comando                  | Qué hace                                              |
+|--------------------------|-------------------------------------------------------|
+| `./build.sh install -e`  | Compila, instala y activa la extensión                |
+| `./build.sh install`     | Compila e instala                                     |
+| `./build.sh build`       | Solo compila el `.zip` en `build/`                    |
+| `./build.sh status`      | Versión, compatibilidad con tu GNOME y estado         |
+| `./build.sh prefs`       | Abre las preferencias                                 |
+| `./build.sh uninstall`   | Desinstala                                            |
+| `./build.sh help`        | Todos los comandos                                    |
+
+Si falta alguna herramienta, el script te dice el comando exacto para
+instalarla en Fedora, Debian/Ubuntu, Arch u openSUSE.
+
+Al terminar, cierra sesión y vuelve a entrar para cargar la versión nueva
+(en Wayland es necesario).
+
+Para actualizar más adelante:
+
+```sh
+git pull
+./build.sh install
+```
+
+Si prefieres `make`, existen los mismos atajos (`make install`, `make pack`…).
+
+### Desinstalar
+
+```sh
+gnome-extensions uninstall unified-panel@aleixenandros.me
+```
+
+o `./build.sh uninstall` si la instalaste desde el código.
 
 ## Publicar una versión
 
@@ -85,6 +141,7 @@ lib/format.js         utilidades de fecha compartidas con prefs.js
 schemas/              esquema GSettings (todas las opciones)
 po/                   traducciones (es)
 stylesheet.css        estilos, compatibles con tema claro y oscuro
+build.sh              compilar, instalar, traducir (lo usa también el Makefile)
 .github/workflows/    publicación automática de versiones
 ```
 
@@ -111,7 +168,7 @@ Pautas:
 - JavaScript moderno sin compilar (módulos ES), siguiendo el estilo de código
   de GNOME Shell.
 - Todo lo que se cambia en `enable()` debe deshacerse en `disable()`.
-- Los textos visibles pasan por `_()`; ejecuta `make pot` después de cambiarlos.
+- Los textos visibles pasan por `_()`; ejecuta `./build.sh pot` después de cambiarlos.
 
 ## Licencia
 

@@ -19,7 +19,7 @@ Supported: **GNOME Shell 51**. Works with Dash to Panel.
 
 ## Options
 
-Open them with `make prefs` or from the Extensions app.
+Open them with `./build.sh prefs` or from the Extensions app.
 
 **Panel**
 - Merge the notifications into the panel (on/off)
@@ -34,19 +34,75 @@ Open them with `make prefs` or from the Extensions app.
 - Custom top bar clock format using GLib codes (`%a %-d %b  %H:%M`),
   `\n` for two lines, live preview, and font size
 
-## Install from source
+## Installation
 
-No build step or Node.js is needed, only the standard GNOME tools.
+Requires **GNOME Shell 51**. Check your version with `gnome-shell --version`.
+
+### Option 1: from extensions.gnome.org
+
+Once approved, it can be installed with one click from
+[extensions.gnome.org](https://extensions.gnome.org) or from the
+**Extension Manager** app, searching for “Unified Panel”.
+
+### Option 2: from a published release
+
+1. Download `unified-panel@aleixenandros.me.shell-extension.zip` from the
+   [latest release](https://github.com/Aleixenandros/unified-panel/releases/latest).
+2. Install and enable it:
+
+   ```sh
+   gnome-extensions install --force unified-panel@aleixenandros.me.shell-extension.zip
+   gnome-extensions enable unified-panel@aleixenandros.me
+   ```
+
+3. Log out and back in.
+
+### Option 3: from source
+
+No code compilation or Node.js needed: the `build.sh` script packs and
+installs the extension with the standard GNOME tools.
 
 ```sh
-make install          # pack + install for the current user
-make enable           # first time only
+git clone https://github.com/Aleixenandros/unified-panel.git
+cd unified-panel
+./build.sh
 ```
 
-On Wayland, log out and back in to load new code.
+Without arguments it shows a menu with the most common actions. You can
+also call it directly:
 
-Other targets: `make pack`, `make prefs`, `make uninstall`, `make pot`
-(refresh translations), `make check` (validate the settings schema).
+| Command                  | What it does                                          |
+|--------------------------|-------------------------------------------------------|
+| `./build.sh install -e`  | Build, install and enable the extension               |
+| `./build.sh install`     | Build and install                                     |
+| `./build.sh build`       | Only build the zip in `build/`                        |
+| `./build.sh status`      | Version, compatibility with your GNOME and state      |
+| `./build.sh prefs`       | Open the preferences                                  |
+| `./build.sh uninstall`   | Uninstall                                             |
+| `./build.sh help`        | All commands                                          |
+
+If a tool is missing, the script prints the exact command to install it on
+Fedora, Debian/Ubuntu, Arch or openSUSE.
+
+When done, log out and back in to load the new version (required on
+Wayland).
+
+To update later:
+
+```sh
+git pull
+./build.sh install
+```
+
+If you prefer `make`, the same shortcuts exist (`make install`, `make pack`…).
+
+### Uninstall
+
+```sh
+gnome-extensions uninstall unified-panel@aleixenandros.me
+```
+
+or `./build.sh uninstall` if you installed it from source.
 
 ## Releasing a new version
 
@@ -81,6 +137,7 @@ lib/format.js        date helpers shared with prefs.js
 schemas/             GSettings schema (all options)
 po/                  translations (es)
 stylesheet.css       styles, light and dark theme friendly
+build.sh             build, install, translations (also used by the Makefile)
 .github/workflows/   automatic release publishing
 ```
 
@@ -104,7 +161,7 @@ It relies on a few private GNOME Shell fields, all used in
 Guidelines:
 - Plain modern JavaScript (ES modules), following the GNOME Shell code style.
 - Every change made in `enable()` must be undone in `disable()`.
-- User-visible strings go through `_()`; run `make pot` after changing them.
+- User-visible strings go through `_()`; run `./build.sh pot` after changing them.
 
 ## License
 

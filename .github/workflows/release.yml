@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: Install tools
-        run: dnf install -y --setopt=install_weak_deps=False gnome-shell gettext glib2 make zip unzip git gh
+        run: dnf install -y --setopt=install_weak_deps=False gnome-shell gettext glib2 zip unzip git gh
 
       - uses: actions/checkout@v7
 
@@ -38,14 +38,9 @@ jobs:
             exit 1
           fi
 
-      - name: Validate
+      - name: Validate and build
         run: |
-          make check
-          for po in po/*.po; do msgfmt --check -o /dev/null "$po"; done
-
-      - name: Pack
-        run: |
-          make pack
+          ./build.sh build
           unzip -l build/*.shell-extension.zip
 
       - name: Publish GitHub Release

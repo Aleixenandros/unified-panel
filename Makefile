@@ -1,50 +1,39 @@
-# Unified Panel - build helpers. Only standard GNOME tools are needed:
-# gnome-extensions, glib-compile-schemas, xgettext and msgfmt.
+# Unified Panel - Makefile shortcuts. All the work is done by build.sh;
+# these targets exist for people used to `make`, for CI and for releases.
 
-UUID   := unified-panel@aleixenandros.me
-SCHEMA := schemas/org.gnome.shell.extensions.unified-panel.gschema.xml
-ZIP    := build/$(UUID).shell-extension.zip
-JS     := extension.js prefs.js $(wildcard lib/*.js)
-
-.PHONY: all pack install uninstall enable disable prefs pot check release clean
+.PHONY: all pack install uninstall enable disable prefs status pot check release clean
 
 all: pack
 
-pack: $(ZIP)
+pack:
+	./build.sh build
 
-$(ZIP): metadata.json stylesheet.css $(JS) $(SCHEMA) $(wildcard po/*.po)
-	@mkdir -p build
-	gnome-extensions pack --force --out-dir=build \
-		--extra-source=lib --schema=$(SCHEMA) --podir=po .
-
-install: pack
-	gnome-extensions install --force $(ZIP)
-	glib-compile-schemas $(HOME)/.local/share/gnome-shell/extensions/$(UUID)/schemas
-	@echo "Installed. On Wayland, log out and back in to load the new code."
+install:
+	./build.sh install
 
 uninstall:
-	gnome-extensions uninstall $(UUID)
+	./build.sh uninstall
 
 enable:
-	gnome-extensions enable $(UUID)
+	./build.sh enable
 
 disable:
-	gnome-extensions disable $(UUID)
+	./build.sh disable
 
 prefs:
-	gnome-extensions prefs $(UUID)
+	./build.sh prefs
 
-# Regenerate the translation template after changing user-visible strings.
+status:
+	./build.sh status
+
 pot:
-	xgettext --from-code=UTF-8 --language=JavaScript --keyword=_ --keyword=N_ \
-		--add-comments=Translators --package-name="$(UUID)" \
-		--output=po/unified-panel.pot $(JS)
-	@for po in $(wildcard po/*.po); do msgmerge --update --backup=none "$$po" po/unified-panel.pot; done
+	./build.sh pot
 
-# Validate the settings schema.
 check:
-	glib-compile-schemas --strict --dry-run schemas
-	@echo "OK"
+	./build.sh check
+
+clean:
+	./build.sh clean
 
 # Publish a new version: sets version-name, commits, tags vX.Y and pushes.
 # GitHub Actions then builds the zip and creates the GitHub Release.
@@ -56,11 +45,8 @@ release:
 	@! git rev-parse -q --verify "refs/tags/v$(VERSION)" >/dev/null || { echo "Tag v$(VERSION) already exists"; exit 1; }
 	git pull --ff-only
 	sed -i 's/"version-name": "[^"]*"/"version-name": "$(VERSION)"/' metadata.json
-	$(MAKE) --no-print-directory check pack
+	./build.sh build
 	git diff --quiet metadata.json || git commit -m "Release $(VERSION)" metadata.json
 	git tag -a "v$(VERSION)" -m "Unified Panel $(VERSION)"
 	git push origin main "v$(VERSION)"
 	@echo "Pushed v$(VERSION). GitHub Actions will publish the release."
-
-clean:
-	rm -rf build
