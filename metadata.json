@@ -8,5 +8,5 @@
   "url": "https://github.com/Aleixenandros/unified-panel",
   "settings-schema": "org.gnome.shell.extensions.unified-panel",
   "gettext-domain": "unified-panel",
-  "version-name": "2.1"
+  "version-name": "2.2"
 }
