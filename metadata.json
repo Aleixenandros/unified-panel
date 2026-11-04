@@ -9,5 +9,5 @@
   "settings-schema": "org.gnome.shell.extensions.unified-panel",
   "gettext-domain": "unified-panel",
   "version": 2,
-  "version-name": "2.0"
+  "version-name": "2.1"
 }
