@@ -175,8 +175,27 @@ cmd_uninstall() {
 
 cmd_enable() {
     require gnome-extensions
-    gnome-extensions enable "$UUID"
-    ok "$(t 'Enabled' 'Activada')"
+    if gnome-extensions enable "$UUID" 2>/dev/null; then
+        ok "$(t 'Enabled' 'Activada')"
+        return
+    fi
+
+    # The running GNOME Shell only knows the extensions that were installed
+    # when the session started. Add it to the list of enabled extensions so
+    # it starts with the next session.
+    is_installed || die "$(t 'Install the extension first: ./build.sh install' 'Instala antes la extensión: ./build.sh install')"
+    local list
+    list=$(gsettings get org.gnome.shell enabled-extensions)
+    if [[ $list != *"'$UUID'"* ]]; then
+        if [[ $list == *'[]' ]]; then
+            list="['$UUID']"
+        else
+            list="${list%]}, '$UUID']"
+        fi
+        gsettings set org.gnome.shell enabled-extensions "$list"
+    fi
+    ok "$(t 'Enabled. It will start after you log out and back in.' \
+            'Activada. Arrancará al cerrar sesión y volver a entrar.')"
 }
 
 cmd_disable() {
