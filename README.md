@@ -182,4 +182,4 @@ Pautas:
 
 ## Licencia
 
-GPL-2.0-or-later
+Apache-2.0. Consulta el archivo [LICENSE](LICENSE).
