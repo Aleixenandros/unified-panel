@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: GPL-2.0-or-later
 #
-# Unified Panel - build and install helper.
+# Build and install helper for this GNOME Shell extension. It reads the
+# extension id, name and schema from the project files, so the same script
+# works for any extension laid out like this one.
 #
 #   ./build.sh                 interactive menu
 #   ./build.sh install -e      build, install and enable
@@ -11,11 +13,17 @@
 # glib-compile-schemas and msgfmt (plus xgettext/msgmerge for `pot`).
 
 set -euo pipefail
+shopt -s nullglob
 
 cd "$(dirname "$(readlink -f "$0")")"
 
-UUID=unified-panel@aleixenandros.me
-SCHEMA=schemas/org.gnome.shell.extensions.unified-panel.gschema.xml
+meta() { sed -n "s/.*\"$1\": *\"\([^\"]*\)\".*/\1/p" metadata.json | head -1; }
+
+UUID=$(meta uuid)
+NAME=$(meta name)
+DOMAIN=$(meta gettext-domain)
+SCHEMA=$(find schemas -name '*.gschema.xml' 2>/dev/null | head -1)
+EXTRA_DIRS=(lib icons)
 BUILD_DIR=build
 ZIP=$BUILD_DIR/$UUID.shell-extension.zip
 INSTALL_DIR=${XDG_DATA_HOME:-$HOME/.local/share}/gnome-shell/extensions/$UUID
@@ -86,7 +94,7 @@ supported_versions() {
     sed -n '/"shell-version"/,/]/p' metadata.json | grep -oE '"[0-9.]+"' | tr -d '"' | paste -sd ' '
 }
 
-version_name() { sed -n 's/.*"version-name": *"\([^"]*\)".*/\1/p' metadata.json; }
+version_name() { meta version-name; }
 
 check_shell_version() {
     local current supported
@@ -111,7 +119,7 @@ is_enabled() {
 cmd_check() {
     require glib-compile-schemas msgfmt
     step "$(t 'Checking the settings schema and translations' 'Comprobando el esquema de opciones y las traducciones')"
-    glib-compile-schemas --strict --dry-run schemas
+    [[ -z $SCHEMA ]] || glib-compile-schemas --strict --dry-run schemas
     local po
     for po in po/*.po; do
         msgfmt --check -o /dev/null "$po"
@@ -122,10 +130,14 @@ cmd_check() {
 cmd_build() {
     require gnome-extensions glib-compile-schemas msgfmt
     cmd_check
-    step "$(t "Building Unified Panel $(version_name)" "Compilando Unified Panel $(version_name)")"
+    step "$(t "Building $NAME $(version_name)" "Compilando $NAME $(version_name)")"
+    local args=(--force --out-dir="$BUILD_DIR" --podir=po) dir
+    [[ -n $SCHEMA ]] && args+=(--schema="$SCHEMA")
+    for dir in "${EXTRA_DIRS[@]}"; do
+        [[ -d $dir ]] && args+=(--extra-source="$dir")
+    done
     mkdir -p "$BUILD_DIR"
-    gnome-extensions pack --force --out-dir="$BUILD_DIR" \
-        --extra-source=lib --schema="$SCHEMA" --podir=po .
+    gnome-extensions pack "${args[@]}" .
     ok "$(t 'Package ready:' 'Paquete listo:') $ZIP ($(du -h "$ZIP" | cut -f1))"
 }
 
@@ -183,7 +195,7 @@ cmd_prefs() {
 yesno() { if "$@"; then t yes sí; else t no no; fi; }
 
 cmd_status() {
-    printf '%s%s%s\n' "$BOLD" "Unified Panel $(version_name)" "$RESET"
+    printf '%s%s%s\n' "$BOLD" "$NAME $(version_name)" "$RESET"
     printf '  %-22s %s\n' "$(t 'GNOME Shell:' 'GNOME Shell:')" "$(shell_version || echo '?')"
     printf '  %-22s %s\n' "$(t 'Supported versions:' 'Versiones soportadas:')" "$(supported_versions)"
     printf '  %-22s %s\n' "$(t 'Installed:' 'Instalada:')" "$(yesno is_installed)"
@@ -205,10 +217,10 @@ cmd_pot() {
     step "$(t 'Updating translation template' 'Actualizando la plantilla de traducciones')"
     xgettext --from-code=UTF-8 --language=JavaScript --keyword=_ --keyword=N_ \
         --add-comments=Translators --package-name="$UUID" \
-        --output=po/unified-panel.pot "${JS_FILES[@]}"
+        --output="po/$DOMAIN.pot" "${JS_FILES[@]}"
     local po
     for po in po/*.po; do
-        msgmerge --quiet --update --backup=none "$po" po/unified-panel.pot
+        msgmerge --quiet --update --backup=none "$po" "po/$DOMAIN.pot"
     done
     ok "$(t 'Done. Translate the new strings in po/*.po' 'Hecho. Traduce las cadenas nuevas en po/*.po')"
 }
@@ -220,7 +232,7 @@ cmd_clean() {
 
 cmd_help() {
     cat <<EOF
-${BOLD}Unified Panel $(version_name)${RESET} - $(t 'build and install helper' 'compilar e instalar')
+${BOLD}$NAME $(version_name)${RESET} - $(t 'build and install helper' 'compilar e instalar')
 
 $(t 'Usage' 'Uso'): ./build.sh [$(t 'command' 'comando')]
 
