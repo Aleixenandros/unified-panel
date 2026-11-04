@@ -53,9 +53,10 @@ Requiere **GNOME Shell 51**. Comprueba tu versión con `gnome-shell --version`.
 
 ### Opción 1: desde extensions.gnome.org
 
-Cuando esté aprobada, se podrá instalar con un clic desde
-[extensions.gnome.org](https://extensions.gnome.org) o desde la aplicación
-**Gestor de extensiones**, buscando «Unified Panel».
+Está [en revisión](https://extensions.gnome.org/review/77871) en
+extensions.gnome.org. Cuando la aprueben, se podrá instalar con un clic
+desde [su página](https://extensions.gnome.org/extension/11636/unified-panel/) o desde la
+aplicación **Gestor de extensiones**, buscando «Unified Panel».
 
 ### Opción 2: desde una versión publicada
 
