@@ -1,5 +1,7 @@
 # Builds the extension zip and publishes a GitHub Release when a version
 # tag (v2.1, v3.0…) is pushed. Create the tag with `make release VERSION=x.y`.
+# It can also be run by hand from the Actions tab to test the build; then it
+# only validates and packs, without publishing anything.
 #
 # Fedora is used because it ships the same `gnome-extensions` tool that
 # developers use locally, so the zip is identical to `make pack`.
@@ -10,6 +12,7 @@ on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -23,9 +26,10 @@ jobs:
       - name: Install tools
         run: dnf install -y --setopt=install_weak_deps=False gnome-shell gettext glib2 make zip unzip git gh
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Check that the tag matches metadata.json
+        if: github.ref_type == 'tag'
         run: |
           tag="${GITHUB_REF_NAME#v}"
           meta=$(sed -n 's/.*"version-name": *"\([^"]*\)".*/\1/p' metadata.json)
@@ -45,6 +49,7 @@ jobs:
           unzip -l build/*.shell-extension.zip
 
       - name: Publish GitHub Release
+        if: github.ref_type == 'tag'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
