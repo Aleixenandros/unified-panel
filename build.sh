@@ -36,9 +36,9 @@ else
 fi
 
 step() { printf '%s==>%s %s\n' "$BLUE$BOLD" "$RESET" "$*"; }
-ok()   { printf '%s✓%s %s\n' "$GREEN" "$RESET" "$*"; }
+ok()   { printf '%sOK%s %s\n' "$GREEN" "$RESET" "$*"; }
 warn() { printf '%s!%s %s\n' "$YELLOW" "$RESET" "$*" >&2; }
-die()  { printf '%s✗%s %s\n' "$RED" "$RESET" "$*" >&2; exit 1; }
+die()  { printf '%sError:%s %s\n' "$RED" "$RESET" "$*" >&2; exit 1; }
 
 # ── Dependencies ───────────────────────────────────────────────────
 

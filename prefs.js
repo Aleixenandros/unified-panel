@@ -161,7 +161,7 @@ export default class UnifiedPanelPreferences extends ExtensionPreferences {
             const text = formatDateTime(pattern);
             preview.label = text === null
                 ? _('Invalid format')
-                : capitalize(text).replaceAll('\n', ' ⏎ ');
+                : capitalize(text).replaceAll('\n', ' / ');
         };
 
         row.connect('changed', updatePreview);
