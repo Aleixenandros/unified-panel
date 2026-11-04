@@ -21,14 +21,23 @@ Supported: **GNOME Shell 51**. Works with Dash to Panel.
 
 Open them with `./build.sh prefs` or from the Extensions app.
 
+**Layout**
+- Presets: notifications and calendar on the left or on the right, calendar
+  on the left with the notifications next to the controls, one column with
+  the calendar or the notifications on top, or controls only
+- One or two columns
+- Five blocks you can place freely: large clock, “Now Playing” card, quick
+  settings, notifications and calendar. Each goes in the column you choose,
+  in any order, or is not shown. Notifications and calendar that are not
+  shown stay in the clock menu; without the “Now Playing” card, players
+  stay in the notification list.
+- With one column, the panel scrolls when it does not fit on the screen
+
 **Panel**
-- Merge the notifications into the panel (on/off)
-- Merge the calendar, events, world clocks and weather (on/off).
-  If either one is off, the clock keeps its own popup with what is left.
-- “Now Playing” card (on/off). When off, players stay in the notification list.
-- Large clock header (on/off) and its date format
-- Column side: notifications on the left or on the right
+- Events, world clocks and weather below the calendar (each on/off)
+- “Notifications” title above the list (on/off)
 - Hide the unread dot next to the clock
+- Date format of the large clock
 
 **Clock**
 - Custom top bar clock format using GLib codes (`%a %-d %b  %H:%M`),
@@ -130,6 +139,7 @@ The zip is never stored in git: `build/` is in `.gitignore`.
 extension.js         entry point: enable/disable, rebuilds on settings change
 prefs.js             preferences window (libadwaita)
 lib/unifiedPanel.js  moves GNOME's widgets into the Quick Settings popup
+lib/layout.js        blocks, presets and settings migration (shared with prefs.js)
 lib/mediaCard.js     “Now Playing” card
 lib/clockHeader.js   large clock and date
 lib/clockFormatter.js custom top bar clock
@@ -144,8 +154,8 @@ build.sh             build, install, translations (also used by the Makefile)
 ## How it works (for contributors)
 
 The extension does not re-implement GNOME's widgets: it **moves** the real
-notification list, calendar column and Quick Settings grid into a new
-two-column layout, and puts them back when disabled. That keeps Wi-Fi,
+notification list, calendar column and Quick Settings grid into the chosen
+layout (`layout` key, see `lib/layout.js`), and puts them back when disabled. That keeps Wi-Fi,
 Bluetooth, sound, notifications, etc. behaving exactly like stock GNOME and
 keeps this code small.
 
@@ -154,7 +164,7 @@ It relies on a few private GNOME Shell fields, all used in
 
 - `Main.panel.statusArea.quickSettings.menu`: `_grid`, `_overlay`, `_boxPointer`
 - `Main.panel.statusArea.dateMenu`: `_messageList`, `_calendar`, `_date`,
-  `_eventsItem`, `_indicator`, `_clockDisplay`, `_clock`
+  `_eventsItem`, `_clocksItem`, `_weatherItem`, `_indicator`, `_clockDisplay`, `_clock`
 - `_messageList._messageView`: `_mediaSource`, `_playerToMessage`,
   `_removePlayer()`, `_setupMpris()`
 

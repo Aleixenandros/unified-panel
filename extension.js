@@ -1,20 +1,30 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+import GLib from 'gi://GLib';
+
 import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
 import {ClockFormatter} from './lib/clockFormatter.js';
+import {migrateLegacySettings} from './lib/layout.js';
 import {UnifiedPanel} from './lib/unifiedPanel.js';
 
 export default class UnifiedPanelExtension extends Extension {
     enable() {
         this._settings = this.getSettings();
+        migrateLegacySettings(this._settings);
+
         // Any option change rebuilds everything: simple and predictable.
-        this._settings.connectObject('changed', () => this._rebuild(), this);
+        // Changes made together (e.g. choosing a preset) rebuild only once.
+        this._settings.connectObject('changed', () => this._queueRebuild(), this);
         this._build();
     }
 
     disable() {
+        if (this._rebuildId) {
+            GLib.source_remove(this._rebuildId);
+            this._rebuildId = 0;
+        }
         this._settings.disconnectObject(this);
         this._teardown();
         this._settings = null;
@@ -35,8 +45,15 @@ export default class UnifiedPanelExtension extends Extension {
         this._panel = null;
     }
 
-    _rebuild() {
-        this._teardown();
-        this._build();
+    _queueRebuild() {
+        if (this._rebuildId)
+            return;
+
+        this._rebuildId = GLib.idle_add(GLib.PRIORITY_DEFAULT, () => {
+            this._rebuildId = 0;
+            this._teardown();
+            this._build();
+            return GLib.SOURCE_REMOVE;
+        });
     }
 }

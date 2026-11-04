@@ -4,33 +4,35 @@
           path="/org/gnome/shell/extensions/unified-panel/">
 
     <!-- Layout -->
-    <key name="unify-notifications" type="b">
-      <default>true</default>
-      <summary>Show notifications in the unified panel</summary>
+    <key name="columns" type="i">
+      <range min="1" max="2"/>
+      <default>2</default>
+      <summary>Number of columns of the panel</summary>
     </key>
-    <key name="unify-calendar" type="b">
-      <default>true</default>
-      <summary>Show the calendar, events, world clocks and weather in the unified panel</summary>
+    <key name="layout" type="as">
+      <default>['notifications:left', 'calendar:left', 'header:right', 'media:right', 'quick-settings:right']</default>
+      <summary>Blocks of the panel, in order</summary>
+      <description>Each entry is block:place. Blocks: header, media, quick-settings, notifications, calendar. Places: left, right or hidden. With one column, left and right both mean shown. Hidden notifications and calendar stay in the clock menu.</description>
     </key>
-    <key name="notifications-side" type="s">
-      <choices>
-        <choice value="left"/>
-        <choice value="right"/>
-      </choices>
-      <default>'left'</default>
-      <summary>Side of the notifications and calendar column</summary>
-    </key>
-    <key name="show-header" type="b">
+    <key name="show-notifications-title" type="b">
       <default>true</default>
-      <summary>Show a large clock and date on top of the control column</summary>
+      <summary>Show the "Notifications" title above the notification list</summary>
+    </key>
+    <key name="calendar-show-events" type="b">
+      <default>true</default>
+      <summary>Show the events below the calendar in the unified panel</summary>
+    </key>
+    <key name="calendar-show-world-clocks" type="b">
+      <default>true</default>
+      <summary>Show the world clocks below the calendar in the unified panel</summary>
+    </key>
+    <key name="calendar-show-weather" type="b">
+      <default>true</default>
+      <summary>Show the weather below the calendar in the unified panel</summary>
     </key>
     <key name="header-date-format" type="s">
       <default>''</default>
       <summary>Date format of the header (GLib strftime syntax). Empty means automatic.</summary>
-    </key>
-    <key name="show-media" type="b">
-      <default>true</default>
-      <summary>Show a "Now Playing" card instead of media players in the notification list</summary>
     </key>
     <key name="hide-messages-indicator" type="b">
       <default>false</default>
@@ -50,6 +52,32 @@
       <range min="0" max="32"/>
       <default>0</default>
       <summary>Font size of the top bar clock in points (0 = theme default)</summary>
+    </key>
+
+    <!-- Version 2.0 options. Only read once, to migrate them to "layout". -->
+    <key name="unify-notifications" type="b">
+      <default>true</default>
+      <summary>Deprecated, replaced by "layout"</summary>
+    </key>
+    <key name="unify-calendar" type="b">
+      <default>true</default>
+      <summary>Deprecated, replaced by "layout"</summary>
+    </key>
+    <key name="notifications-side" type="s">
+      <choices>
+        <choice value="left"/>
+        <choice value="right"/>
+      </choices>
+      <default>'left'</default>
+      <summary>Deprecated, replaced by "layout"</summary>
+    </key>
+    <key name="show-header" type="b">
+      <default>true</default>
+      <summary>Deprecated, replaced by "layout"</summary>
+    </key>
+    <key name="show-media" type="b">
+      <default>true</default>
+      <summary>Deprecated, replaced by "layout"</summary>
     </key>
   </schema>
 </schemalist>

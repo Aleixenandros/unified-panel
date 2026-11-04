@@ -14,7 +14,9 @@
   spacing: 12px;
 }
 
-.unified-panel-side-column {
+/* Card around the notifications and the calendar */
+.unified-panel-card {
+  spacing: 12px;
   background-color: rgba(127, 127, 127, 0.08);
   border-radius: 24px;
   padding: 12px;
@@ -28,9 +30,9 @@
 
 /* ── Notification list (moved from the clock popup) ─────────────── */
 
-.unified-panel-side-column .message-list,
-.unified-panel-side-column .message-list:ltr,
-.unified-panel-side-column .message-list:rtl {
+.unified-panel-card .message-list,
+.unified-panel-card .message-list:ltr,
+.unified-panel-card .message-list:rtl {
   border-width: 0;
   margin: 0;
   padding: 0;
@@ -40,16 +42,16 @@
 
 /* The Quick Settings theme enlarges every button inside it; restore the
  * normal sizes for the widgets that come from the clock popup. */
-.quick-settings .unified-panel-side-column .message .message-header .message-close-button,
-.quick-settings .unified-panel-side-column .message .message-header .message-expand-button {
+.quick-settings .unified-panel-card .message .message-header .message-close-button,
+.quick-settings .unified-panel-card .message .message-header .message-expand-button {
   padding: 6px;
 }
 
-.quick-settings .unified-panel-side-column .calendar .calendar-month-header .pager-button {
+.quick-settings .unified-panel-card .calendar .calendar-month-header .pager-button {
   padding: 0.818em;
 }
 
-.quick-settings .unified-panel-side-column .message-list-clear-button {
+.quick-settings .unified-panel-card .message-list-clear-button {
   padding: 6px 18px;
 }
 
@@ -59,6 +61,10 @@
 .unified-panel-calendar:ltr,
 .unified-panel-calendar:rtl {
   margin: 0;
+}
+
+/* Separator when the calendar shares its card with the notifications */
+.unified-panel-calendar.unified-panel-separated {
   padding-top: 12px;
   border-top-width: 1px;
   border-color: rgba(127, 127, 127, 0.25);

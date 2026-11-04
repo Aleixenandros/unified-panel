@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unified-panel@aleixenandros.me\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-04 00:29+0100\n"
+"POT-Creation-Date: 2026-11-04 19:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,170 +17,291 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: prefs.js:17
+#: prefs.js:20
 msgid "seconds"
 msgstr ""
 
-#: prefs.js:18
+#: prefs.js:21
 msgid "short / full weekday"
 msgstr ""
 
-#: prefs.js:19
+#: prefs.js:22
 msgid "day of month"
 msgstr ""
 
-#: prefs.js:20
+#: prefs.js:23
 msgid "short / full month"
 msgstr ""
 
-#: prefs.js:21
+#: prefs.js:24
 msgid "month number"
 msgstr ""
 
-#: prefs.js:22
+#: prefs.js:25
 msgid "year"
 msgstr ""
 
-#: prefs.js:23
+#: prefs.js:26
 msgid "week number"
 msgstr ""
 
-#: prefs.js:24
+#: prefs.js:27
 msgid "new line"
 msgstr ""
 
-#: prefs.js:45
-msgid "Panel"
-msgstr ""
-
-#: prefs.js:50
-msgid "Content"
-msgstr ""
-
-#: prefs.js:51
-msgid ""
-"Choose what is merged into the unified panel. When both the notifications "
-"and the calendar are merged, clicking the clock opens the unified panel."
-msgstr ""
-
-#: prefs.js:56 lib/unifiedPanel.js:114
-msgid "Notifications"
-msgstr ""
-
-#: prefs.js:56
-msgid "Notification list, Windows style"
-msgstr ""
-
-#: prefs.js:58
-msgid "Calendar"
-msgstr ""
-
-#: prefs.js:58
-msgid "Calendar, events, world clocks and weather"
-msgstr ""
-
-#: prefs.js:60
-msgid "Now Playing card"
-msgstr ""
-
-#: prefs.js:60
-msgid ""
-"Media controls, macOS style. When off, players stay in the notification list."
-msgstr ""
-
-#: prefs.js:62
+#: prefs.js:32 prefs.js:327
 msgid "Large clock"
 msgstr ""
 
-#: prefs.js:62
-msgid "Time and date on top of the controls"
+#: prefs.js:33
+msgid "Time and date"
 msgstr ""
 
-#: prefs.js:64
+#: prefs.js:37
+msgid "Now Playing card"
+msgstr ""
+
+#: prefs.js:38
+msgid "Media controls"
+msgstr ""
+
+#: prefs.js:42
+msgid "Quick settings"
+msgstr ""
+
+#: prefs.js:43
+msgid "Network, sound, brightness, power…"
+msgstr ""
+
+#: prefs.js:47 prefs.js:320 lib/unifiedPanel.js:226
+msgid "Notifications"
+msgstr ""
+
+#: prefs.js:48
+msgid "Notification list"
+msgstr ""
+
+#: prefs.js:52 prefs.js:309
+msgid "Calendar"
+msgstr ""
+
+#: prefs.js:53
+msgid "With events, world clocks and weather"
+msgstr ""
+
+#: prefs.js:78 prefs.js:83
 msgid "Layout"
 msgstr ""
 
-#: prefs.js:69
-msgid "Notifications and calendar column"
+#: prefs.js:84
+msgid "Start from a preset and adjust it below. The panel changes as you go."
 msgstr ""
 
-#: prefs.js:70
-msgid "Left"
+#: prefs.js:89
+msgid "Preset"
 msgstr ""
 
-#: prefs.js:70
-msgid "Right"
-msgstr ""
-
-#: prefs.js:78
-msgid "Large clock date format"
-msgstr ""
-
-#. Translators: header date format (GLib strftime syntax), e.g. "Wednesday, November 4"
-#: prefs.js:78 lib/clockHeader.js:56
-msgid "%A, %B %-d"
-msgstr ""
-
-#: prefs.js:81
-msgid "Hide unread dot"
-msgstr ""
-
-#: prefs.js:81
-msgid "The dot next to the top bar clock"
-msgstr ""
-
-#: prefs.js:90
-msgid "Clock"
-msgstr ""
-
-#: prefs.js:95
-msgid "Top bar clock"
+#: prefs.js:91
+msgid "Custom"
 msgstr ""
 
 #: prefs.js:96
+msgid "Columns"
+msgstr ""
+
+#: prefs.js:97
+msgid "One"
+msgstr ""
+
+#: prefs.js:97
+msgid "Two"
+msgstr ""
+
+#: prefs.js:177 prefs.js:289
+msgid "Left column"
+msgstr ""
+
+#: prefs.js:178 prefs.js:290
+msgid "Right column"
+msgstr ""
+
+#: prefs.js:179 prefs.js:183 prefs.js:296
+msgid "Not shown"
+msgstr ""
+
+#: prefs.js:182
+msgid "Column"
+msgstr ""
+
+#: prefs.js:185
+msgid ""
+"Notifications and calendar not shown here stay in the clock menu. Without "
+"the Now Playing card, players show up in the notification list."
+msgstr ""
+
+#: prefs.js:200
+msgid "Empty column"
+msgstr ""
+
+#: prefs.js:201
+msgid "Move a block here with its menu"
+msgstr ""
+
+#: prefs.js:215
+msgid ""
+"Use the menu of each block to change its column, and the arrows to change "
+"its place in the column."
+msgstr ""
+
+#: prefs.js:216
+msgid "Use the arrows to change the order of the blocks."
+msgstr ""
+
+#: prefs.js:254
+msgid "Move up"
+msgstr ""
+
+#: prefs.js:255
+msgid "Move down"
+msgstr ""
+
+#: prefs.js:292
+msgid "Shown"
+msgstr ""
+
+#: prefs.js:304
+msgid "Panel"
+msgstr ""
+
+#: prefs.js:310
+msgid "Sections below the calendar when it is in the panel."
+msgstr ""
+
+#: prefs.js:314
+msgid "Events"
+msgstr ""
+
+#: prefs.js:314
+msgid "Appointments of the selected day"
+msgstr ""
+
+#: prefs.js:316
+msgid "World clocks"
+msgstr ""
+
+#: prefs.js:316
+msgid "Set them up in the Clocks app"
+msgstr ""
+
+#: prefs.js:318
+msgid "Weather"
+msgstr ""
+
+#: prefs.js:318
+msgid "Set the location in the Weather app"
+msgstr ""
+
+#: prefs.js:323
+msgid "Title"
+msgstr ""
+
+#: prefs.js:323
+msgid "“Notifications” above the list"
+msgstr ""
+
+#: prefs.js:325
+msgid "Hide unread dot"
+msgstr ""
+
+#: prefs.js:325
+msgid "The dot next to the top bar clock"
+msgstr ""
+
+#: prefs.js:330
+msgid "Date format"
+msgstr ""
+
+#. Translators: header date format (GLib strftime syntax), e.g. "Wednesday, November 4"
+#: prefs.js:330 lib/clockHeader.js:56
+msgid "%A, %B %-d"
+msgstr ""
+
+#: prefs.js:339
+msgid "Clock"
+msgstr ""
+
+#: prefs.js:344
+msgid "Top bar clock"
+msgstr ""
+
+#: prefs.js:345
 msgid "Show the date and time in the top bar with your own format."
 msgstr ""
 
-#: prefs.js:102
+#: prefs.js:351
 msgid "“Date Menu Formatter” is enabled"
 msgstr ""
 
-#: prefs.js:103
+#: prefs.js:352
 msgid "Disable one of the two clock formatters to avoid showing two clocks."
 msgstr ""
 
-#: prefs.js:110
+#: prefs.js:359
 msgid "Custom format"
 msgstr ""
 
-#: prefs.js:110
+#: prefs.js:359
 msgid "Replace the default clock text"
 msgstr ""
 
-#: prefs.js:112
+#: prefs.js:361
 msgid "Format"
 msgstr ""
 
-#: prefs.js:117
+#: prefs.js:366
 msgid "Font size"
 msgstr ""
 
-#: prefs.js:118
+#: prefs.js:367
 msgid "In points, 0 uses the theme size"
 msgstr ""
 
-#: prefs.js:126
+#: prefs.js:375
 msgid "Format codes"
 msgstr ""
 
-#: prefs.js:127
+#: prefs.js:376
 msgid ""
 "Uses the GLib date format. Example: %a %-d %b  %H:%M. For two lines, use \\n "
 "and a smaller font size (around 8 pt)."
 msgstr ""
 
-#: prefs.js:163
+#: prefs.js:412
 msgid "Invalid format"
+msgstr ""
+
+#: lib/layout.js:27
+msgid "Notifications and calendar on the left"
+msgstr ""
+
+#: lib/layout.js:32
+msgid "Notifications and calendar on the right"
+msgstr ""
+
+#: lib/layout.js:37
+msgid "Calendar on the left, notifications with the controls"
+msgstr ""
+
+#: lib/layout.js:42
+msgid "One column, calendar on top"
+msgstr ""
+
+#: lib/layout.js:47
+msgid "One column, notifications on top"
+msgstr ""
+
+#: lib/layout.js:52
+msgid "Controls only"
 msgstr ""
 
 #: lib/mediaCard.js:57

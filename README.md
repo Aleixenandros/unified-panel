@@ -22,16 +22,25 @@ Compatible con **GNOME Shell 51**. Funciona con Dash to Panel.
 
 Se abren con `./build.sh prefs` o desde la aplicación Extensiones.
 
+**Disposición**
+- Diseños predefinidos: notificaciones y calendario a la izquierda o a la
+  derecha, calendario a la izquierda con las notificaciones junto a los
+  controles, una columna con el calendario o las notificaciones arriba, o
+  solo controles
+- Una o dos columnas
+- Cinco bloques que se colocan libremente: reloj grande, tarjeta
+  «Reproduciendo», ajustes rápidos, notificaciones y calendario. Cada uno
+  va en la columna que elijas, en el orden que quieras, o no se muestra.
+  Las notificaciones y el calendario que no se muestran siguen en el menú
+  del reloj; sin la tarjeta «Reproduciendo», los reproductores siguen en
+  la lista de notificaciones.
+- Con una columna, el panel se desplaza si no cabe en la pantalla
+
 **Panel**
-- Integrar las notificaciones en el panel (sí/no)
-- Integrar el calendario, los eventos, los relojes mundiales y el tiempo (sí/no).
-  Si alguno de los dos está desactivado, el reloj mantiene su propio menú
-  con lo que quede.
-- Tarjeta «Reproduciendo» (sí/no). Si se desactiva, los reproductores siguen
-  en la lista de notificaciones.
-- Reloj grande (sí/no) y el formato de su fecha
-- Lado de la columna: notificaciones a la izquierda o a la derecha
+- Eventos, relojes del mundo y tiempo bajo el calendario (cada uno sí/no)
+- Título «Notificaciones» encima de la lista (sí/no)
 - Ocultar el punto de notificaciones sin leer junto al reloj
+- Formato de la fecha del reloj grande
 
 **Reloj**
 - Formato personalizado del reloj de la barra con códigos de GLib
@@ -134,6 +143,7 @@ El `.zip` nunca se guarda en git: `build/` está en `.gitignore`.
 extension.js          punto de entrada: enable/disable, se reconstruye al cambiar opciones
 prefs.js              ventana de preferencias (libadwaita)
 lib/unifiedPanel.js   mueve los widgets de GNOME al panel de ajustes rápidos
+lib/layout.js         bloques, diseños predefinidos y migración de opciones (compartido con prefs.js)
 lib/mediaCard.js      tarjeta «Reproduciendo»
 lib/clockHeader.js    reloj grande y fecha
 lib/clockFormatter.js reloj personalizado de la barra
@@ -149,8 +159,8 @@ build.sh              compilar, instalar, traducir (lo usa también el Makefile)
 
 La extensión no reimplementa los widgets de GNOME: **mueve** la lista de
 notificaciones, la columna del calendario y la cuadrícula de ajustes
-rápidos originales a una nueva disposición de dos columnas, y los devuelve a
-su sitio al desactivarse. Así la Wi‑Fi, el Bluetooth, el sonido, las
+rápidos originales a la disposición elegida (clave `layout`, ver
+`lib/layout.js`), y los devuelve a su sitio al desactivarse. Así la Wi‑Fi, el Bluetooth, el sonido, las
 notificaciones, etc. se comportan exactamente como en GNOME y el código se
 mantiene pequeño.
 
@@ -160,7 +170,7 @@ estos primero:
 
 - `Main.panel.statusArea.quickSettings.menu`: `_grid`, `_overlay`, `_boxPointer`
 - `Main.panel.statusArea.dateMenu`: `_messageList`, `_calendar`, `_date`,
-  `_eventsItem`, `_indicator`, `_clockDisplay`, `_clock`
+  `_eventsItem`, `_clocksItem`, `_weatherItem`, `_indicator`, `_clockDisplay`, `_clock`
 - `_messageList._messageView`: `_mediaSource`, `_playerToMessage`,
   `_removePlayer()`, `_setupMpris()`
 
