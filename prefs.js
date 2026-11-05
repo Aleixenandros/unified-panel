@@ -76,8 +76,6 @@ export default class UnifiedPanelPreferences extends ExtensionPreferences {
         window.add(this._buildClockPage(settings));
     }
 
-    // ── Page 1: layout of the panel ───────────────────────────────────
-
     _buildLayoutPage(window, settings) {
         const page = new Adw.PreferencesPage({
             title: _('Layout'),
@@ -303,8 +301,6 @@ export default class UnifiedPanelPreferences extends ExtensionPreferences {
         return choices;
     }
 
-    // ── Page 2: what each block shows ─────────────────────────────────
-
     _buildPanelPage(settings) {
         const page = new Adw.PreferencesPage({
             title: _('Panel'),
@@ -345,8 +341,6 @@ export default class UnifiedPanelPreferences extends ExtensionPreferences {
 
         return page;
     }
-
-    // ── Page 3: top bar clock (Date Menu Formatter style) ─────────────
 
     _buildClockPage(settings) {
         const page = new Adw.PreferencesPage({
@@ -396,8 +390,6 @@ export default class UnifiedPanelPreferences extends ExtensionPreferences {
 
         return page;
     }
-
-    // ── Helpers ───────────────────────────────────────────────────────
 
     /** One row of the format code help: the code and what it shows. */
     _formatCodeRow(code, meaning) {

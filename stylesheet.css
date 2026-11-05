@@ -4,8 +4,6 @@
  * dark shell themes.
  */
 
-/* ── Layout ─────────────────────────────────────────────────────── */
-
 .unified-panel-root {
   spacing: 18px;
 }
@@ -27,8 +25,6 @@
   font-size: 1.1em;
   padding: 0 6px;
 }
-
-/* ── Notification list (moved from the clock popup) ─────────────── */
 
 .unified-panel-card .message-list,
 .unified-panel-card .message-list:ltr,
@@ -55,8 +51,6 @@
   padding: 6px 18px;
 }
 
-/* ── Calendar column (moved from the clock popup) ──────────────── */
-
 .unified-panel-calendar,
 .unified-panel-calendar:ltr,
 .unified-panel-calendar:rtl {
@@ -70,8 +64,6 @@
   border-color: rgba(127, 127, 127, 0.25);
 }
 
-/* ── Large clock header ─────────────────────────────────────────── */
-
 .unified-panel-header {
   padding: 0 6px;
 }
@@ -84,8 +76,6 @@
 .unified-panel-header-date {
   font-weight: 500;
 }
-
-/* ── Now Playing card ───────────────────────────────────────────── */
 
 .unified-panel-media {
   background-color: rgba(127, 127, 127, 0.12);
@@ -170,8 +160,6 @@
 .unified-panel-media-button.unified-panel-media-play StIcon {
   icon-size: 20px;
 }
-
-/* ── Top bar clock ──────────────────────────────────────────────── */
 
 .unified-panel-clock {
   text-align: center;
