@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unified-panel@aleixenandros.me\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-04 19:05+0100\n"
+"POT-Creation-Date: 2026-11-05 09:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,266 +17,272 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: prefs.js:20
-msgid "seconds"
-msgstr ""
-
-#: prefs.js:21
+#: prefs.js:18
 msgid "short / full weekday"
 msgstr ""
 
-#: prefs.js:22
+#: prefs.js:19
 msgid "day of month"
 msgstr ""
 
-#: prefs.js:23
+#: prefs.js:20
 msgid "short / full month"
 msgstr ""
 
-#: prefs.js:24
+#: prefs.js:21
 msgid "month number"
 msgstr ""
 
-#: prefs.js:25
+#: prefs.js:22
 msgid "year"
 msgstr ""
 
-#: prefs.js:26
+#: prefs.js:23
 msgid "week number"
 msgstr ""
 
-#: prefs.js:27
+#: prefs.js:30
+msgid "seconds"
+msgstr ""
+
+#: prefs.js:32
 msgid "new line"
 msgstr ""
 
-#: prefs.js:32 prefs.js:327
+#: prefs.js:37 prefs.js:333
 msgid "Large clock"
 msgstr ""
 
-#: prefs.js:33
+#: prefs.js:38
 msgid "Time and date"
 msgstr ""
 
-#: prefs.js:37
+#: prefs.js:42
 msgid "Now Playing card"
 msgstr ""
 
-#: prefs.js:38
+#: prefs.js:43
 msgid "Media controls"
 msgstr ""
 
-#: prefs.js:42
+#: prefs.js:47
 msgid "Quick settings"
 msgstr ""
 
-#: prefs.js:43
+#: prefs.js:48
 msgid "Network, sound, brightness, power…"
 msgstr ""
 
-#: prefs.js:47 prefs.js:320 lib/unifiedPanel.js:226
+#: prefs.js:52 prefs.js:326 lib/unifiedPanel.js:253
 msgid "Notifications"
 msgstr ""
 
-#: prefs.js:48
+#: prefs.js:53
 msgid "Notification list"
 msgstr ""
 
-#: prefs.js:52 prefs.js:309
+#: prefs.js:57 prefs.js:315
 msgid "Calendar"
 msgstr ""
 
-#: prefs.js:53
+#: prefs.js:58
 msgid "With events, world clocks and weather"
 msgstr ""
 
-#: prefs.js:78 prefs.js:83
+#: prefs.js:83 prefs.js:88
 msgid "Layout"
 msgstr ""
 
-#: prefs.js:84
+#: prefs.js:89
 msgid "Start from a preset and adjust it below. The panel changes as you go."
 msgstr ""
 
-#: prefs.js:89
+#: prefs.js:94
 msgid "Preset"
 msgstr ""
 
-#: prefs.js:91
+#: prefs.js:96
 msgid "Custom"
 msgstr ""
 
-#: prefs.js:96
+#: prefs.js:102
 msgid "Columns"
 msgstr ""
 
-#: prefs.js:97
+#: prefs.js:103
 msgid "One"
 msgstr ""
 
-#: prefs.js:97
+#: prefs.js:103
 msgid "Two"
 msgstr ""
 
-#: prefs.js:177 prefs.js:289
+#: prefs.js:183 prefs.js:295
 msgid "Left column"
 msgstr ""
 
-#: prefs.js:178 prefs.js:290
+#: prefs.js:184 prefs.js:296
 msgid "Right column"
 msgstr ""
 
-#: prefs.js:179 prefs.js:183 prefs.js:296
+#: prefs.js:185 prefs.js:189 prefs.js:302
 msgid "Not shown"
 msgstr ""
 
-#: prefs.js:182
+#: prefs.js:188
 msgid "Column"
 msgstr ""
 
-#: prefs.js:185
+#: prefs.js:191
 msgid ""
 "Notifications and calendar not shown here stay in the clock menu. Without "
 "the Now Playing card, players show up in the notification list."
 msgstr ""
 
-#: prefs.js:200
+#: prefs.js:206
 msgid "Empty column"
 msgstr ""
 
-#: prefs.js:201
+#: prefs.js:207
 msgid "Move a block here with its menu"
 msgstr ""
 
-#: prefs.js:215
+#: prefs.js:221
 msgid ""
 "Use the menu of each block to change its column, and the arrows to change "
 "its place in the column."
 msgstr ""
 
-#: prefs.js:216
+#: prefs.js:222
 msgid "Use the arrows to change the order of the blocks."
 msgstr ""
 
-#: prefs.js:254
+#: prefs.js:260
 msgid "Move up"
 msgstr ""
 
-#: prefs.js:255
+#: prefs.js:261
 msgid "Move down"
 msgstr ""
 
-#: prefs.js:292
+#: prefs.js:298
 msgid "Shown"
 msgstr ""
 
-#: prefs.js:304
+#: prefs.js:310
 msgid "Panel"
 msgstr ""
 
-#: prefs.js:310
+#: prefs.js:316
 msgid "Sections below the calendar when it is in the panel."
 msgstr ""
 
-#: prefs.js:314
+#: prefs.js:320
 msgid "Events"
 msgstr ""
 
-#: prefs.js:314
+#: prefs.js:320
 msgid "Appointments of the selected day"
 msgstr ""
 
-#: prefs.js:316
+#: prefs.js:322
 msgid "World clocks"
 msgstr ""
 
-#: prefs.js:316
+#: prefs.js:322
 msgid "Set them up in the Clocks app"
 msgstr ""
 
-#: prefs.js:318
+#: prefs.js:324
 msgid "Weather"
 msgstr ""
 
-#: prefs.js:318
+#: prefs.js:324
 msgid "Set the location in the Weather app"
 msgstr ""
 
-#: prefs.js:323
+#: prefs.js:329
 msgid "Title"
 msgstr ""
 
-#: prefs.js:323
+#: prefs.js:329
 msgid "“Notifications” above the list"
 msgstr ""
 
-#: prefs.js:325
+#: prefs.js:331
 msgid "Hide unread dot"
 msgstr ""
 
-#: prefs.js:325
+#: prefs.js:331
 msgid "The dot next to the top bar clock"
 msgstr ""
 
-#: prefs.js:330
+#: prefs.js:336
 msgid "Date format"
 msgstr ""
 
 #. Translators: header date format (GLib strftime syntax), e.g. "Wednesday, November 4"
-#: prefs.js:330 lib/clockHeader.js:56
+#: prefs.js:336 lib/clockHeader.js:56
 msgid "%A, %B %-d"
 msgstr ""
 
-#: prefs.js:339
-msgid "Clock"
-msgstr ""
-
-#: prefs.js:344
-msgid "Top bar clock"
-msgstr ""
-
-#: prefs.js:345
-msgid "Show the date and time in the top bar with your own format."
-msgstr ""
-
-#: prefs.js:351
-msgid "“Date Menu Formatter” is enabled"
-msgstr ""
-
-#: prefs.js:352
-msgid "Disable one of the two clock formatters to avoid showing two clocks."
-msgstr ""
-
-#: prefs.js:359
-msgid "Custom format"
-msgstr ""
-
-#: prefs.js:359
-msgid "Replace the default clock text"
-msgstr ""
-
-#: prefs.js:361
-msgid "Format"
-msgstr ""
-
-#: prefs.js:366
-msgid "Font size"
-msgstr ""
-
-#: prefs.js:367
-msgid "In points, 0 uses the theme size"
-msgstr ""
-
-#: prefs.js:375
+#: prefs.js:339 prefs.js:389
 msgid "Format codes"
 msgstr ""
 
-#: prefs.js:376
+#: prefs.js:340
+msgid ""
+"Same codes as the top bar clock. Leave the format empty to use the default "
+"date."
+msgstr ""
+
+#: prefs.js:353
+msgid "Clock"
+msgstr ""
+
+#: prefs.js:358
+msgid "Top bar clock"
+msgstr ""
+
+#: prefs.js:359
+msgid "Show the date and time in the top bar with your own format."
+msgstr ""
+
+#: prefs.js:365
+msgid "“Date Menu Formatter” is enabled"
+msgstr ""
+
+#: prefs.js:366
+msgid "Disable one of the two clock formatters to avoid showing two clocks."
+msgstr ""
+
+#: prefs.js:373
+msgid "Custom format"
+msgstr ""
+
+#: prefs.js:373
+msgid "Replace the default clock text"
+msgstr ""
+
+#: prefs.js:375
+msgid "Format"
+msgstr ""
+
+#: prefs.js:380
+msgid "Font size"
+msgstr ""
+
+#: prefs.js:381
+msgid "In points, 0 uses the theme size"
+msgstr ""
+
+#: prefs.js:390
 msgid ""
 "Uses the GLib date format. Example: %a %-d %b  %H:%M. For two lines, use \\n "
 "and a smaller font size (around 8 pt)."
 msgstr ""
 
-#: prefs.js:412
+#: prefs.js:468
 msgid "Invalid format"
 msgstr ""
 

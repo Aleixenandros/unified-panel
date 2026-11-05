@@ -14,16 +14,21 @@ import {
 
 const DATE_MENU_FORMATTER_UUID = 'date-menu-formatter@marcinjakubowski.github.com';
 
-const PATTERN_HELP = [
-    ['%H:%M', '24h'],
-    ['%-l:%M %p', '12h'],
-    ['%S', N_('seconds')],
+const DATE_CODES = [
     ['%a / %A', N_('short / full weekday')],
     ['%-d / %d', N_('day of month')],
     ['%b / %B', N_('short / full month')],
     ['%m', N_('month number')],
     ['%Y / %y', N_('year')],
     ['%V', N_('week number')],
+];
+
+// The top bar clock also shows the time and can use two lines.
+const CLOCK_CODES = [
+    ['%H:%M', '24h'],
+    ['%-l:%M %p', '12h'],
+    ['%S', N_('seconds')],
+    ...DATE_CODES,
     ['\\n', N_('new line')],
 ];
 
@@ -330,6 +335,14 @@ export default class UnifiedPanelPreferences extends ExtensionPreferences {
         header.add(this._patternRow(settings, 'header-date-format',
             _('Date format'), _('%A, %B %-d')));
 
+        const codes = new Adw.ExpanderRow({
+            title: _('Format codes'),
+            subtitle: _('Same codes as the top bar clock. Leave the format empty to use the default date.'),
+        });
+        for (const [code, meaning] of DATE_CODES)
+            codes.add_row(this._formatCodeRow(code, meaning));
+        header.add(codes);
+
         return page;
     }
 
@@ -378,16 +391,20 @@ export default class UnifiedPanelPreferences extends ExtensionPreferences {
         });
         page.add(help);
 
-        for (const [code, meaning] of PATTERN_HELP) {
-            const row = new Adw.ActionRow({title: code, subtitle: _(meaning)});
-            row.add_css_class('monospace');
-            help.add(row);
-        }
+        for (const [code, meaning] of CLOCK_CODES)
+            help.add(this._formatCodeRow(code, meaning));
 
         return page;
     }
 
     // ── Helpers ───────────────────────────────────────────────────────
+
+    /** One row of the format code help: the code and what it shows. */
+    _formatCodeRow(code, meaning) {
+        const row = new Adw.ActionRow({title: code, subtitle: _(meaning)});
+        row.add_css_class('monospace');
+        return row;
+    }
 
     /**
      * Popup list for a combo row with long items: they wrap instead of

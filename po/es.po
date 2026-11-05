@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: unified-panel@aleixenandros.me\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-04 19:05+0100\n"
+"POT-Creation-Date: 2026-11-05 09:52+0100\n"
 "PO-Revision-Date: 2026-11-04 00:22+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -18,124 +18,124 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: prefs.js:20
-msgid "seconds"
-msgstr "segundos"
-
-#: prefs.js:21
+#: prefs.js:18
 msgid "short / full weekday"
 msgstr "día de la semana corto / completo"
 
-#: prefs.js:22
+#: prefs.js:19
 msgid "day of month"
 msgstr "día del mes"
 
-#: prefs.js:23
+#: prefs.js:20
 msgid "short / full month"
 msgstr "mes corto / completo"
 
-#: prefs.js:24
+#: prefs.js:21
 msgid "month number"
 msgstr "número de mes"
 
-#: prefs.js:25
+#: prefs.js:22
 msgid "year"
 msgstr "año"
 
-#: prefs.js:26
+#: prefs.js:23
 msgid "week number"
 msgstr "número de semana"
 
-#: prefs.js:27
+#: prefs.js:30
+msgid "seconds"
+msgstr "segundos"
+
+#: prefs.js:32
 msgid "new line"
 msgstr "salto de línea"
 
-#: prefs.js:32 prefs.js:327
+#: prefs.js:37 prefs.js:333
 msgid "Large clock"
 msgstr "Reloj grande"
 
-#: prefs.js:33
+#: prefs.js:38
 msgid "Time and date"
 msgstr "Hora y fecha"
 
-#: prefs.js:37
+#: prefs.js:42
 msgid "Now Playing card"
 msgstr "Tarjeta «Reproduciendo»"
 
-#: prefs.js:38
+#: prefs.js:43
 msgid "Media controls"
 msgstr "Controles multimedia"
 
-#: prefs.js:42
+#: prefs.js:47
 msgid "Quick settings"
 msgstr "Ajustes rápidos"
 
-#: prefs.js:43
+#: prefs.js:48
 msgid "Network, sound, brightness, power…"
 msgstr "Red, sonido, brillo, energía…"
 
-#: prefs.js:47 prefs.js:320 lib/unifiedPanel.js:226
+#: prefs.js:52 prefs.js:326 lib/unifiedPanel.js:253
 msgid "Notifications"
 msgstr "Notificaciones"
 
-#: prefs.js:48
+#: prefs.js:53
 msgid "Notification list"
 msgstr "Lista de notificaciones"
 
-#: prefs.js:52 prefs.js:309
+#: prefs.js:57 prefs.js:315
 msgid "Calendar"
 msgstr "Calendario"
 
-#: prefs.js:53
+#: prefs.js:58
 msgid "With events, world clocks and weather"
 msgstr "Con eventos, relojes del mundo y tiempo"
 
-#: prefs.js:78 prefs.js:83
+#: prefs.js:83 prefs.js:88
 msgid "Layout"
 msgstr "Disposición"
 
-#: prefs.js:84
+#: prefs.js:89
 msgid "Start from a preset and adjust it below. The panel changes as you go."
 msgstr ""
 "Parte de un diseño predefinido y ajústalo debajo. El panel cambia al momento."
 
-#: prefs.js:89
+#: prefs.js:94
 msgid "Preset"
 msgstr "Diseño"
 
-#: prefs.js:91
+#: prefs.js:96
 msgid "Custom"
 msgstr "Personalizado"
 
-#: prefs.js:96
+#: prefs.js:102
 msgid "Columns"
 msgstr "Columnas"
 
-#: prefs.js:97
+#: prefs.js:103
 msgid "One"
 msgstr "Una"
 
-#: prefs.js:97
+#: prefs.js:103
 msgid "Two"
 msgstr "Dos"
 
-#: prefs.js:177 prefs.js:289
+#: prefs.js:183 prefs.js:295
 msgid "Left column"
 msgstr "Columna izquierda"
 
-#: prefs.js:178 prefs.js:290
+#: prefs.js:184 prefs.js:296
 msgid "Right column"
 msgstr "Columna derecha"
 
-#: prefs.js:179 prefs.js:183 prefs.js:296
+#: prefs.js:185 prefs.js:189 prefs.js:302
 msgid "Not shown"
 msgstr "No se muestra"
 
-#: prefs.js:182
+#: prefs.js:188
 msgid "Column"
 msgstr "Columna"
 
-#: prefs.js:185
+#: prefs.js:191
 msgid ""
 "Notifications and calendar not shown here stay in the clock menu. Without "
 "the Now Playing card, players show up in the notification list."
@@ -144,15 +144,15 @@ msgstr ""
 "del reloj. Sin la tarjeta «Reproduciendo», los reproductores aparecen en la "
 "lista de notificaciones."
 
-#: prefs.js:200
+#: prefs.js:206
 msgid "Empty column"
 msgstr "Columna vacía"
 
-#: prefs.js:201
+#: prefs.js:207
 msgid "Move a block here with its menu"
 msgstr "Mueve un bloque aquí con su menú"
 
-#: prefs.js:215
+#: prefs.js:221
 msgid ""
 "Use the menu of each block to change its column, and the arrows to change "
 "its place in the column."
@@ -160,125 +160,133 @@ msgstr ""
 "Usa el menú de cada bloque para cambiarlo de columna y las flechas para "
 "cambiar su posición dentro de ella."
 
-#: prefs.js:216
+#: prefs.js:222
 msgid "Use the arrows to change the order of the blocks."
 msgstr "Usa las flechas para cambiar el orden de los bloques."
 
-#: prefs.js:254
+#: prefs.js:260
 msgid "Move up"
 msgstr "Subir"
 
-#: prefs.js:255
+#: prefs.js:261
 msgid "Move down"
 msgstr "Bajar"
 
-#: prefs.js:292
+#: prefs.js:298
 msgid "Shown"
 msgstr "Se muestra"
 
-#: prefs.js:304
+#: prefs.js:310
 msgid "Panel"
 msgstr "Panel"
 
-#: prefs.js:310
+#: prefs.js:316
 msgid "Sections below the calendar when it is in the panel."
 msgstr "Secciones bajo el calendario cuando está en el panel."
 
-#: prefs.js:314
+#: prefs.js:320
 msgid "Events"
 msgstr "Eventos"
 
-#: prefs.js:314
+#: prefs.js:320
 msgid "Appointments of the selected day"
 msgstr "Citas del día seleccionado"
 
-#: prefs.js:316
+#: prefs.js:322
 msgid "World clocks"
 msgstr "Relojes del mundo"
 
-#: prefs.js:316
+#: prefs.js:322
 msgid "Set them up in the Clocks app"
 msgstr "Se configuran en la aplicación Relojes"
 
-#: prefs.js:318
+#: prefs.js:324
 msgid "Weather"
 msgstr "Tiempo"
 
-#: prefs.js:318
+#: prefs.js:324
 msgid "Set the location in the Weather app"
 msgstr "La ubicación se elige en la aplicación Meteorología"
 
-#: prefs.js:323
+#: prefs.js:329
 msgid "Title"
 msgstr "Título"
 
-#: prefs.js:323
+#: prefs.js:329
 msgid "“Notifications” above the list"
 msgstr "«Notificaciones» encima de la lista"
 
-#: prefs.js:325
+#: prefs.js:331
 msgid "Hide unread dot"
 msgstr "Ocultar punto de no leídas"
 
-#: prefs.js:325
+#: prefs.js:331
 msgid "The dot next to the top bar clock"
 msgstr "El punto junto al reloj de la barra superior"
 
-#: prefs.js:330
+#: prefs.js:336
 msgid "Date format"
 msgstr "Formato de la fecha"
 
 #. Translators: header date format (GLib strftime syntax), e.g. "Wednesday, November 4"
-#: prefs.js:330 lib/clockHeader.js:56
+#: prefs.js:336 lib/clockHeader.js:56
 msgid "%A, %B %-d"
 msgstr "%A, %-d de %B"
 
-#: prefs.js:339
+#: prefs.js:339 prefs.js:389
+msgid "Format codes"
+msgstr "Códigos de formato"
+
+#: prefs.js:340
+msgid ""
+"Same codes as the top bar clock. Leave the format empty to use the default "
+"date."
+msgstr ""
+"Los mismos códigos que el reloj de la barra superior. Deja el formato vacío "
+"para usar la fecha predeterminada."
+
+#: prefs.js:353
 msgid "Clock"
 msgstr "Reloj"
 
-#: prefs.js:344
+#: prefs.js:358
 msgid "Top bar clock"
 msgstr "Reloj de la barra superior"
 
-#: prefs.js:345
+#: prefs.js:359
 msgid "Show the date and time in the top bar with your own format."
 msgstr "Muestra la fecha y la hora en la barra superior con tu propio formato."
 
-#: prefs.js:351
+#: prefs.js:365
 msgid "“Date Menu Formatter” is enabled"
 msgstr "«Date Menu Formatter» está activada"
 
-#: prefs.js:352
+#: prefs.js:366
 msgid "Disable one of the two clock formatters to avoid showing two clocks."
 msgstr ""
 "Desactiva uno de los dos formateadores de reloj para no mostrar dos relojes."
 
-#: prefs.js:359
+#: prefs.js:373
 msgid "Custom format"
 msgstr "Formato personalizado"
 
-#: prefs.js:359
+#: prefs.js:373
 msgid "Replace the default clock text"
 msgstr "Sustituye el texto del reloj por defecto"
 
-#: prefs.js:361
+#: prefs.js:375
 msgid "Format"
 msgstr "Formato"
 
-#: prefs.js:366
+#: prefs.js:380
 msgid "Font size"
 msgstr "Tamaño de letra"
 
-#: prefs.js:367
+#: prefs.js:381
 msgid "In points, 0 uses the theme size"
 msgstr "En puntos; 0 usa el tamaño del tema"
 
-#: prefs.js:375
-msgid "Format codes"
-msgstr "Códigos de formato"
-
-#: prefs.js:376
+#: prefs.js:390
 msgid ""
 "Uses the GLib date format. Example: %a %-d %b  %H:%M. For two lines, use \\n "
 "and a smaller font size (around 8 pt)."
@@ -286,7 +294,7 @@ msgstr ""
 "Usa el formato de fecha de GLib. Ejemplo: %a %-d %b  %H:%M. Para dos líneas, "
 "usa \\n y un tamaño de letra menor (unos 8 pt)."
 
-#: prefs.js:412
+#: prefs.js:468
 msgid "Invalid format"
 msgstr "Formato no válido"
 
