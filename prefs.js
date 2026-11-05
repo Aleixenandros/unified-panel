@@ -90,6 +90,7 @@ export default class UnifiedPanelPreferences extends ExtensionPreferences {
             use_subtitle: true,
             model: Gtk.StringList.new([...PRESETS.map(preset => _(preset.name)), _('Custom')]),
         });
+        presetRow.list_factory = this._wrappingListFactory(presetRow);
         group.add(presetRow);
 
         const columnsRow = new Adw.ComboRow({
@@ -387,6 +388,44 @@ export default class UnifiedPanelPreferences extends ExtensionPreferences {
     }
 
     // ── Helpers ───────────────────────────────────────────────────────
+
+    /**
+     * Popup list for a combo row with long items: they wrap instead of
+     * being cut, and the selected one has a check mark.
+     *
+     * @param {Adw.ComboRow} comboRow
+     * @returns {Gtk.ListItemFactory}
+     */
+    _wrappingListFactory(comboRow) {
+        const factory = new Gtk.SignalListItemFactory();
+        const handlers = new Map();
+
+        factory.connect('setup', (_factory, item) => {
+            const box = new Gtk.Box({spacing: 12});
+            box.append(new Gtk.Label({
+                xalign: 0,
+                wrap: true,
+                hexpand: true,
+                width_chars: 20,
+                max_width_chars: 30,
+            }));
+            box.append(new Gtk.Image({icon_name: 'object-select-symbolic'}));
+            item.child = box;
+        });
+        factory.connect('bind', (_factory, item) => {
+            const box = item.child;
+            box.get_first_child().label = item.item.string;
+            const check = box.get_last_child();
+            const sync = () => (check.opacity = comboRow.selected === item.position ? 1 : 0);
+            handlers.set(item, comboRow.connect('notify::selected', sync));
+            sync();
+        });
+        factory.connect('unbind', (_factory, item) => {
+            comboRow.disconnect(handlers.get(item));
+            handlers.delete(item);
+        });
+        return factory;
+    }
 
     _switchRow(settings, key, title, subtitle) {
         const row = new Adw.SwitchRow({title, subtitle});
